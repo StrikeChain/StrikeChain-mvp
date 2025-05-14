@@ -1,26 +1,278 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 24, 28, 30; /* #181C1E */
+  --background-end-rgb: 24, 28, 30; /* #181C1E */
+  --accent-color: 131, 239, 245; /* #83EFF5 */
+  --accent-color-hover: 128, 235, 240; /* #80EBF0 */
+  --accent-color-light: 131, 239, 245, 0.1; /* #83EFF5 at 10% */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background-color: #181c1e;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  font-size: 14px;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .tracking-tight {
+    letter-spacing: -0.04em;
+  }
+
+  .bg-grid-small-white {
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  .card-compact {
+    padding: 0.75rem;
+  }
+
+  .tournament-compact {
+    font-size: 0.875rem;
+  }
+
+  .h-tournament-card {
+    height: auto;
+    max-height: 280px;
+  }
+
+  .overflow-container {
+    max-height: 100%;
+    overflow: auto;
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 8px 2px rgba(131, 239, 245, 0.5);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #131618;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2f33;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4045;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2f33 #131618;
+}
+
+/* Responsive layout styles */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .main-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .profile-section {
+    grid-column: span 3;
+  }
+
+  .rewards-section {
+    grid-column: span 6;
+  }
+
+  .activity-section {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .tournaments-section {
+    grid-column: span 9;
+  }
+}
+
+/* Card styles */
+.card {
+  background-color: #16181a;
+  border-radius: 0.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tournament-card {
+  background-color: #131618;
+  border-radius: 0.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chart container */
+.chart-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background-color: #131618;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  height: 12rem;
+  margin-bottom: 1rem;
+}
+
+.chart-bar {
+  width: 0.5rem;
+  background-color: #83eff5;
+  border-radius: 0.125rem;
+}
+
+/* Custom scrollbar for activity section */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #131618;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2a2f33;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3a4045;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2f33 #131618;
+}
+
+/* Fix for Safari overflow bug */
+.flex-1 {
+  min-height: 0;
+}
+
+/* Optimize for vertical space */
+.h-compact {
+  height: auto;
+}
+
+.text-compact {
+  font-size: 0.8125rem;
+}
+
+.p-compact {
+  padding: 0.5rem;
+}
+
+/* Ensure tournament cards are compact but visible */
+.tournament-card-compact {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 0;
+}
+
+/* Ensure the main grid uses available space efficiently */
+.main-content-grid {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+/* Ensure scrollable areas don't overflow their containers */
+.overflow-y-auto {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Ensure the tournament section is fully visible */
+.tournament-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Animaciones para la gráfica */
+@keyframes barGrow {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: var(--target-height);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(131, 239, 245, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(131, 239, 245, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(131, 239, 245, 0);
+  }
+}
+
+.animate-bar-grow {
+  animation: barGrow 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite;
 }
