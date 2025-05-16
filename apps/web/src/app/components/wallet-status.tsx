@@ -2,9 +2,8 @@
 
 import { useState } from "react"
 import { LogOut, ChevronDown } from "lucide-react"
-import { useWallet } from "@/contexts/wallet-context"
-import { formatAddress } from "@/lib/utils"
-
+import { useWallet } from "@/app/contexts/wallet-context"
+import { formatAddress } from "@/app/lib/utils"
 export function WalletStatus() {
   const { wallet, disconnectWallet } = useWallet()
   const [isOpen, setIsOpen] = useState(false)

@@ -6,8 +6,8 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { X, ArrowRight, AlertCircle } from "lucide-react"
 import Link from "next/link"
-import { useWallet } from "@/contexts/wallet-context"
-import type { WalletType } from "@/lib/wallet-mock"
+import { useWallet } from "@/app/contexts/wallet-context"
+import type { WalletType } from "@/app/lib/wallet-mock"
 import WalletIcon from "./wallet-icon"
 
 export default function WalletConnectModal({

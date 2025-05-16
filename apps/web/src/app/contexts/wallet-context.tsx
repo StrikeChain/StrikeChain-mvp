@@ -8,7 +8,7 @@ import {
   disconnectWallet as disconnectWalletMock,
   isWalletInstalled,
   availableWallets,
-} from "@/lib/wallet-mock"
+} from "@/app/lib/wallet-mock"
 
 interface WalletContextType {
   wallet: ConnectedWallet | null

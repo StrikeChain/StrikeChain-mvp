@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { X, ArrowRight, Trophy, Calendar, Users, CheckCircle } from "lucide-react"
 import Link from "next/link"
-import { useWallet } from "@/contexts/wallet-context"
+import { useWallet } from "@/app/contexts/wallet-context"
 
 export default function OrganizerModal({
   isOpen,
