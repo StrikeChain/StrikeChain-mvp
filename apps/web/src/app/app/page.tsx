@@ -3,14 +3,14 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { WalletStatus } from "@/components/wallet-status"
-import { useWallet } from "@/contexts/wallet-context"
-import MobileAppPopup from "@/components/mobile-app-popup"
-import AccountAccessModal from "@/components/account-access-modal"
-import FlowDiagram from "@/components/flow-diagram"
-import OrganizerModal from "@/components/organizer-modal"
-import ParticipantModal from "@/components/participant-modal"
-import WalletConnectModal from "@/components/wallet-connect-modal"
+import { WalletStatus } from "@/app/components/wallet-status"
+import { useWallet } from "@/app/contexts/wallet-context"
+import MobileAppPopup from "@/app/components/mobile-app-popup"
+import AccountAccessModal from "@/app/components/account-access-modal"
+import FlowDiagram from "@/app/components/flow-diagram"
+import OrganizerModal from "@/app/components/organizer-modal"
+import ParticipantModal from "@/app/components/participant-modal"
+import WalletConnectModal from "@/app/components/wallet-connect-modal"
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
